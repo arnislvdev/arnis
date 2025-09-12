@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Static Site to GitHub Pages
 
 on:
   push:
@@ -19,16 +19,27 @@ jobs:
       with:
         go-version: '1.21'
         
-    - name: Build Go application
-      run: go build -o portfolio main.go
-      
-    - name: Create static files
+    - name: Generate static HTML
+      run: |
+        # Create a temporary server to generate the HTML
+        go run main.go &
+        SERVER_PID=$!
+        sleep 5
+        
+        # Download the generated HTML
+        curl -o index.html http://localhost:8080/
+        
+        # Kill the server
+        kill $SERVER_PID
+        
+    - name: Create static site structure
       run: |
         mkdir -p dist
+        cp index.html dist/
         cp -r static dist/
         cp -r public dist/
-        cp -r templates dist/
-        cp portfolio dist/
+        cp robots.txt dist/
+        cp sitemap.xml dist/
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
@@ -36,4 +47,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
-        # cname: arnis.wtf  # Temporarily disabled until DNS is configured
+        cname: arnis.wtf
