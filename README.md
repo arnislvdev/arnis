@@ -1,4 +1,4 @@
-# Old School Portfolio
+# Arnis Portfolio
 
 A minimalist, old-school styled portfolio website built with Go and CSS, inspired by the early days of the web.
 
@@ -18,7 +18,7 @@ A minimalist, old-school styled portfolio website built with Go and CSS, inspire
 ## Project Structure
 
 ```
-oldschool-portfolio/
+arnis/
 ├── main.go              # Go web server
 ├── go.mod              # Go module file
 ├── templates/
@@ -39,7 +39,7 @@ oldschool-portfolio/
 
 3. **Navigate to the project directory**:
    ```bash
-   cd oldschool-portfolio
+   cd arnis
    ```
 
 4. **Run the server**:

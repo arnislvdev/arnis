@@ -50,9 +50,17 @@ jobs:
         mkdir -p dist
         curl -s http://localhost:8080/ > dist/index.html
         
-        # Verify HTML was generated
+        # Verify HTML was generated and contains rendered content
         if [ ! -s dist/index.html ]; then
           echo "Error: Failed to generate index.html"
+          exit 1
+        fi
+        
+        # Check if templates were properly rendered (should not contain {{.Name}} etc.)
+        if grep -q "{{\.Name}}" dist/index.html; then
+          echo "Error: Templates were not properly rendered"
+          echo "Content still contains template placeholders:"
+          grep "{{\.Name}}" dist/index.html
           exit 1
         fi
         
