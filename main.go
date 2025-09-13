@@ -70,7 +70,7 @@ func securityHeaders(next http.Handler) http.Handler {
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	// Set security headers
 	setSecurityHeaders(w)
-	
+
 	// Portfolio data
 	data := PortfolioData{
 		Name:       "Arnis [REDACTED]",

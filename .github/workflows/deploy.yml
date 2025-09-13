@@ -22,15 +22,27 @@ jobs:
     - name: Build Go application
       run: go build -o portfolio main.go
       
-    - name: Create static files
+    - name: Generate static HTML
       run: |
+        # Create a temporary server to generate static HTML
+        ./portfolio &
+        SERVER_PID=$!
+        sleep 3
+        
+        # Generate static HTML files
         mkdir -p dist
+        curl -s http://localhost:8080/ > dist/index.html
+        
+        # Copy static assets
         cp -r static dist/
         cp -r public dist/
-        cp -r templates dist/
-        cp portfolio dist/
         cp _headers dist/
         cp _redirects dist/
+        cp robots.txt dist/
+        cp sitemap.xml dist/
+        
+        # Kill the server
+        kill $SERVER_PID
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3

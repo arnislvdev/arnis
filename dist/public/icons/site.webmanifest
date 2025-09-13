@@ -1,0 +1,26 @@
+{
+    "name": "Arnis [REDACTED] - Portfolio",
+    "short_name": "Arnis Portfolio",
+    "description": "Aspiring Full Stack Developer - Portfolio showcasing web development and cybersecurity projects",
+    "icons": [
+        {
+            "src": "/icons/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#000000",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "start_url": "/"
+}
