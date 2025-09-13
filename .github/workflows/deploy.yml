@@ -71,6 +71,7 @@ jobs:
         cp _redirects dist/
         cp robots.txt dist/
         cp sitemap.xml dist/
+        cp CNAME dist/
         
         # Kill the server
         kill $SERVER_PID 2>/dev/null || true
