@@ -27,11 +27,26 @@ jobs:
         # Create a temporary server to generate static HTML
         ./portfolio &
         SERVER_PID=$!
-        sleep 3
+        
+        # Wait for server to start and check if it's running
+        for i in {1..10}; do
+          if curl -f http://localhost:8080/ > /dev/null 2>&1; then
+            echo "Server is running"
+            break
+          fi
+          echo "Waiting for server to start... ($i/10)"
+          sleep 2
+        done
         
         # Generate static HTML files
         mkdir -p dist
         curl -s http://localhost:8080/ > dist/index.html
+        
+        # Verify HTML was generated
+        if [ ! -s dist/index.html ]; then
+          echo "Error: Failed to generate index.html"
+          exit 1
+        fi
         
         # Copy static assets
         cp -r static dist/
@@ -42,7 +57,7 @@ jobs:
         cp sitemap.xml dist/
         
         # Kill the server
-        kill $SERVER_PID
+        kill $SERVER_PID 2>/dev/null || true
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
