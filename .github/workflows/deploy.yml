@@ -29,6 +29,8 @@ jobs:
         cp -r public dist/
         cp -r templates dist/
         cp portfolio dist/
+        cp _headers dist/
+        cp _redirects dist/
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
@@ -37,3 +39,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
         # cname: arnis.wtf  # Temporarily disabled until DNS is configured
+        force_orphan: true
+        enable_jekyll: false
