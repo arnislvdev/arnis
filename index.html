@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>{{.Name}} - {{.Title}}</title>
+    <meta name="title" content="{{.Name}} - {{.Title}}">
+    <meta name="description" content="{{.Bio}} | Full Stack Developer specializing in Go, JavaScript, and cybersecurity. View my portfolio and get in touch for collaboration opportunities.">
+    <meta name="keywords" content="full stack developer, web development, Go, JavaScript, TypeScript, React, Next.js, cybersecurity, portfolio, software engineer">
+    <meta name="author" content="{{.Name}}">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arnis.wtf">
+    <meta property="og:title" content="{{.Name}} - {{.Title}}">
+    <meta property="og:description" content="{{.Bio}} | Full Stack Developer specializing in Go, JavaScript, and cybersecurity.">
+    <meta property="og:image" content="https://arnis.wtf/icons/apple-touch-icon.png">
+    <meta property="og:site_name" content="{{.Name}} Portfolio">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://arnis.wtf">
+    <meta property="twitter:title" content="{{.Name}} - {{.Title}}">
+    <meta property="twitter:description" content="{{.Bio}} | Full Stack Developer specializing in Go, JavaScript, and cybersecurity.">
+    <meta property="twitter:image" content="https://arnis.wtf/icons/apple-touch-icon.png">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/icons/site.webmanifest">
+    
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arnis.wtf">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{.Name}}",
+        "jobTitle": "{{.Title}}",
+        "description": "{{.Bio}}",
+        "email": "{{.Contact}}",
+        "url": "https://arnis.wtf",
+        "sameAs": [
+            "https://github.com/arnislvdev"
+        ],
+        "knowsAbout": [
+            "Go",
+            "JavaScript",
+            "TypeScript",
+            "React",
+            "Next.js",
+            "HTML",
+            "CSS",
+            "Full Stack Development",
+            "Cybersecurity"
+        ],
+        "alumniOf": "College Student",
+        "age": "18"
+    }
+    </script>
+</head>
+<body>
+        <!-- Header Navigation -->
+        <div class="header">
+            <div class="nav-links">
+                <a href="#home" onclick="scrollToSection('home')">home</a>
+                <span class="nav-separator">/</span>
+                <a href="#projects" onclick="scrollToSection('projects')">projects</a>
+                <span class="nav-separator">/</span>
+                <a href="#contact" onclick="scrollToSection('contact')">contact</a>
+                <span class="nav-separator">/</span>
+                <a href="https://github.com/arnislvdev" target="_blank">github</a>
+            </div>
+            <h1>{{.Name}}</h1>
+            <p>{{.Title}}</p>
+        </div>
+
+    <!-- About Section -->
+    <section id="home">
+        <h2>About</h2>
+        <p>{{.Bio}}</p>
+        
+        <div class="quote-section">
+            <blockquote>
+                "Simplicity is the ultimate sophistication."
+            </blockquote>
+            <cite>- Leonardo da Vinci</cite>
+            <p class="mission">Building digital experiences with purpose & precision</p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="newsletter">
+        <h2>Get In Touch</h2>
+        <p>Have a project in mind? Let's discuss how we can work together to bring your ideas to life.</p>
+        
+        <form class="newsletter-form" id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="your@email.com" required>
+            <textarea name="message" placeholder="Tell me about your project..." rows="4" required></textarea>
+            <button type="submit">Open Email Client</button>
+        </form>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            {{range .Projects}}
+            <div class="project">
+                <div class="project-title">
+                    <a href="{{.URL}}" target="_blank">{{.Title}}</a>
+                </div>
+                <div class="project-description">{{.Description}}</div>
+                <div class="project-tech">
+                    Tech: {{range $i, $tech := .Tech}}{{if $i}}, {{end}}{{$tech}}{{end}}
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section>
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="skill-tags">
+                    <a href="https://golang.org" target="_blank" class="skill-tag">Go</a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="skill-tag">JavaScript</a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="skill-tag">HTML</a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="skill-tag">CSS</a>
+                    <a href="https://www.typescriptlang.org" target="_blank" class="skill-tag">TypeScript</a>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks & Libraries</h3>
+                <div class="skill-tags">
+                    <a href="https://nextjs.org" target="_blank" class="skill-tag">Next.js</a>
+                    <a href="https://tailwindcss.com" target="_blank" class="skill-tag">Tailwind CSS</a>
+                    <a href="https://reactjs.org" target="_blank" class="skill-tag">React</a>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Databases</h3>
+                <div class="skill-tags">
+                    <a href="https://www.postgresql.org" target="_blank" class="skill-tag">SQL</a>
+                    <a href="https://www.mysql.com" target="_blank" class="skill-tag">MySQL</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Let's connect and build something amazing together!</p>
+        <p>Email: <a href="mailto:{{.Contact}}">{{.Contact}}</a></p>
+        <p>GitHub: <a href="https://github.com/arnislvdev" target="_blank">github.com/arnislvdev</a></p>
+    </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 {{.Name}} | Built with Go & CSS</p>
+            <p>Last updated: <span id="lastUpdated"></span></p>
+            <p>Connect with me: <a href="mailto:{{.Contact}}">{{.Contact}}</a> | <a href="https://github.com/arnislvdev" target="_blank">GitHub</a></p>
+        </footer>
+
+    <script>
+        // Simple JavaScript for old-school feel
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update last modified date
+            document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString();
+            
+            // Simple form handling that opens email client
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = form.querySelector('input[name="name"]').value.trim();
+                    const email = form.querySelector('input[name="email"]').value.trim();
+                    const message = form.querySelector('textarea[name="message"]').value.trim();
+                    
+                    // Basic validation
+                    if (!name || !email || !message) {
+                        alert('Please fill in all fields.');
+                        return;
+                    }
+                    
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Please enter a valid email address.');
+                        return;
+                    }
+                    
+                    // Create mailto link
+                    const subject = encodeURIComponent(`Contact from ${name} - Portfolio Website`);
+                    const body = encodeURIComponent(`Hi Arnis,
+
+${message}
+
+Best regards,
+${name}
+Email: ${email}`);
+                    
+                    const mailtoLink = `mailto:hi@arnis.wtf?subject=${subject}&body=${body}`;
+                    
+                    // Open email client
+                    window.location.href = mailtoLink;
+                    
+                    // Show success message
+                    alert('Your email client should open with a pre-filled message. If it doesn\'t open automatically, please email me at hi@arnis.wtf');
+                    
+                    // Reset form
+                    form.reset();
+                });
+            }
+        });
+        
+        // Smooth scrolling for navigation
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
+    </script>
+</body>
+</html>
