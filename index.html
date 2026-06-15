@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{.Name}} &mdash; {{.Title}}</title>
-    <meta name="description" content="{{.Bio}}">
-    <meta name="author" content="{{.Name}}">
+    <title>Arnis &mdash; Full Stack Developer & Design Nerd</title>
+    <meta name="description" content="College student studying Computing & IT. I build things for the web — full stack, end to end. Design-driven by nature, meaning I actually care how it looks, not just how it works. When I'm not coding I'm deep in anime, manga, manhwa, manhua, or a novel. Certified otaku. Seriously though, let's build something.">
+    <meta name="author" content="Arnis">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arnis.wtf">
-    <meta property="og:title" content="{{.Name}} &mdash; {{.Title}}">
-    <meta property="og:description" content="{{.Bio}}">
+    <meta property="og:title" content="Arnis &mdash; Full Stack Developer & Design Nerd">
+    <meta property="og:description" content="College student studying Computing & IT. I build things for the web — full stack, end to end.">
     <meta property="og:image" content="https://arnis.wtf/icons/apple-touch-icon.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://arnis.wtf">
-    <meta name="twitter:title" content="{{.Name}} &mdash; {{.Title}}">
-    <meta name="twitter:description" content="{{.Bio}}">
+    <meta name="twitter:title" content="Arnis &mdash; Full Stack Developer & Design Nerd">
+    <meta name="twitter:description" content="College student studying Computing & IT. I build things for the web — full stack, end to end.">
     <meta name="twitter:image" content="https://arnis.wtf/icons/apple-touch-icon.png">
 
     <!-- Icons -->
@@ -38,10 +38,10 @@
     {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "{{.Name}}",
-        "jobTitle": "{{.Title}}",
-        "description": "{{.Bio}}",
-        "email": "{{.Contact}}",
+        "name": "Arnis",
+        "jobTitle": "Full Stack Developer & Design Nerd",
+        "description": "College student studying Computing & IT. I build things for the web — full stack, end to end.",
+        "email": "hi@arnis.wtf",
         "url": "https://arnis.wtf",
         "sameAs": ["https://github.com/arnislvdev"],
         "knowsAbout": ["Go", "JavaScript", "TypeScript", "React", "Next.js", "HTML", "CSS", "Cybersecurity"]
@@ -51,8 +51,8 @@
 <body>
 
     <header>
-        <div class="header-name">{{.Name}}</div>
-        <div class="header-title">{{.Title}}</div>
+        <div class="header-name">Arnis</div>
+        <div class="header-title">Full Stack Developer &amp; Design Nerd</div>
         <nav>
             [&nbsp;<a href="#about">about</a>&nbsp;/
             <a href="#projects">projects</a>&nbsp;/
@@ -68,8 +68,8 @@
         <section id="about">
             <span class="section-meta">&lt;!-- about --&gt;</span>
             <h2>About</h2>
-            <p>{{.Bio}}</p>
-            <p class="availability">* currently open to freelance &amp; full-time work &mdash; <a href="mailto:{{.Contact}}">say hello</a></p>
+            <p>College student studying Computing &amp; IT. I build things for the web &mdash; full stack, end to end. Design-driven by nature, meaning I actually care how it looks, not just how it works. When I&rsquo;m not coding I&rsquo;m deep in anime, manga, manhwa, manhua, or a novel. Certified otaku. Seriously though, let&rsquo;s build something.</p>
+            <p class="availability">* currently open to freelance &amp; full-time work &mdash; <a href="mailto:hi@arnis.wtf">say hello</a></p>
             <blockquote>
                 <p>&ldquo;Simplicity is the ultimate sophistication.&rdquo;</p>
                 <cite>&mdash; Leonardo da Vinci</cite>
@@ -83,13 +83,16 @@
             <span class="section-meta">&lt;!-- projects --&gt;</span>
             <h2>Projects</h2>
             <ul class="project-list">
-                {{range .Projects}}
                 <li>
-                    <p class="project-name"><a href="{{.URL}}" target="_blank" rel="noopener noreferrer">{{.Title}}&nbsp;&uarr;</a></p>
-                    <p class="project-desc">{{.Description}}</p>
-                    <p class="project-tech">{{range $i, $t := .Tech}}{{if $i}}, {{end}}{{$t}}{{end}}</p>
+                    <p class="project-name"><a href="https://arnis.wtf" target="_blank" rel="noopener noreferrer">arnis.wtf&nbsp;&uarr;</a></p>
+                    <p class="project-desc">This site. A clean portfolio built from scratch in Go &mdash; no frameworks, no bloat. Just hand-rolled HTML, CSS, and a server that stays out of the way.</p>
+                    <p class="project-tech">Go, HTML, CSS</p>
                 </li>
-                {{end}}
+                <li>
+                    <p class="project-name"><a href="#" rel="noopener noreferrer">Coming Soon&nbsp;&uarr;</a></p>
+                    <p class="project-desc">A project I&rsquo;m currently working on. It&rsquo;s a web app that will change the way you think about productivity. Stay tuned for more details!</p>
+                    <p class="project-tech">Next.js, TypeScript, Tailwind CSS, Go</p>
+                </li>
             </ul>
         </section>
 
@@ -129,7 +132,7 @@
             <span class="section-meta">&lt;!-- contact --&gt;</span>
             <h2>Contact</h2>
             <p>Have a project in mind? Let&rsquo;s talk.</p>
-            <p class="contact-detail">email:&nbsp;&nbsp;<a href="mailto:{{.Contact}}">{{.Contact}}</a></p>
+            <p class="contact-detail">email:&nbsp;&nbsp;<a href="mailto:hi@arnis.wtf">hi@arnis.wtf</a></p>
             <p class="contact-detail">github:&nbsp;<a href="https://github.com/arnislvdev" target="_blank" rel="noopener noreferrer">github.com/arnislvdev</a></p>
 
             <form id="contact-form" novalidate>
@@ -154,8 +157,8 @@
 
     <footer>
         <hr class="footer-rule">
-        <p>&copy; {{.Year}} {{.Name}} &mdash; built with Go &amp; CSS</p>
-        <p><a href="mailto:{{.Contact}}">{{.Contact}}</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="https://github.com/arnislvdev" target="_blank" rel="noopener noreferrer">github.com/arnislvdev</a></p>
+        <p>&copy; 2026 Arnis &mdash; built with Go &amp; CSS</p>
+        <p><a href="mailto:hi@arnis.wtf">hi@arnis.wtf</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="https://github.com/arnislvdev" target="_blank" rel="noopener noreferrer">github.com/arnislvdev</a></p>
     </footer>
 
     <script>
@@ -188,8 +191,8 @@
                 const subject = encodeURIComponent('Contact from ' + name + ' \u2014 Portfolio');
                 const body    = encodeURIComponent('Hi Arnis,\n\n' + message + '\n\nBest,\n' + name + '\n' + email);
 
-                window.location.href = 'mailto:{{.Contact}}?subject=' + subject + '&body=' + body;
-                showStatus('> email client opened. if nothing happened, write to {{.Contact}} directly.', 'status-ok');
+                window.location.href = 'mailto:hi@arnis.wtf?subject=' + subject + '&body=' + body;
+                showStatus('> email client opened. if nothing happened, write to hi@arnis.wtf directly.', 'status-ok');
                 form.reset();
             });
         })();
