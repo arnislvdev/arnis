@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"time"
 )
 
 type Project struct {
@@ -14,23 +15,18 @@ type Project struct {
 }
 
 type PortfolioData struct {
-	Name       string
-	Title      string
-	Bio        string
-	Projects   []Project
-	Contact    string
-	Newsletter string
+	Name     string
+	Title    string
+	Bio      string
+	Projects []Project
+	Contact  string
+	Year     int
 }
 
 func main() {
-	// Serve static files (CSS, JS, etc.) with security headers
 	http.Handle("/static/", securityHeaders(http.StripPrefix("/static/", http.FileServer(http.Dir("static")))))
-
-	// Serve public assets (icons, images, etc.) with security headers
 	http.Handle("/icons/", securityHeaders(http.StripPrefix("/icons/", http.FileServer(http.Dir("public/icons")))))
-	http.Handle("/public/", securityHeaders(http.StripPrefix("/public/", http.FileServer(http.Dir("public")))))
 
-	// Serve SEO files with security headers
 	http.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
 		setSecurityHeaders(w)
 		http.ServeFile(w, r, "robots.txt")
@@ -41,14 +37,12 @@ func main() {
 		http.ServeFile(w, r, "sitemap.xml")
 	})
 
-	// Handle main page
 	http.HandleFunc("/", homeHandler)
 
 	log.Println("Server starting on :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
-// setSecurityHeaders sets security headers for HTTP responses
 func setSecurityHeaders(w http.ResponseWriter) {
 	w.Header().Set("X-Frame-Options", "DENY")
 	w.Header().Set("X-Content-Type-Options", "nosniff")
@@ -56,10 +50,17 @@ func setSecurityHeaders(w http.ResponseWriter) {
 	w.Header().Set("Referrer-Policy", "strict-origin-when-cross-origin")
 	w.Header().Set("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
 	w.Header().Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload")
-	w.Header().Set("Content-Security-Policy", "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none';")
+	// No external font sources needed — system fonts only.
+	w.Header().Set("Content-Security-Policy",
+		"default-src 'self'; "+
+			"script-src 'self' 'unsafe-inline'; "+
+			"style-src 'self' 'unsafe-inline'; "+
+			"img-src 'self' data: https:; "+
+			"font-src 'self'; "+
+			"connect-src 'self'; "+
+			"frame-ancestors 'none';")
 }
 
-// securityHeaders middleware adds security headers to responses
 func securityHeaders(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		setSecurityHeaders(w)
@@ -68,42 +69,37 @@ func securityHeaders(next http.Handler) http.Handler {
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-	// Set security headers
 	setSecurityHeaders(w)
 
-	// Portfolio data
 	data := PortfolioData{
-		Name:       "Arnis [REDACTED]",
-		Title:      "Aspiring Full Stack Developer",
-		Bio:        "18-year-old college student passionate about full-stack development and cybersecurity. Learning to build modern web applications while exploring the security aspects of software development.",
-		Contact:    "hi@arnis.wtf",
-		Newsletter: "I write about web development, design, and the evolution of the internet.",
+		Name:    "Arnis",
+		Title:   "Full Stack Developer & Design Nerd",
+		Bio:     "College student studying Computing & IT. I build things for the web — full stack, end to end. Design-driven by nature, meaning I actually care how it looks, not just how it works. When I'm not coding I'm deep in anime, manga, manhwa, manhua, or a novel. Certified otaku. Seriously though, let's build something.",
+		Contact: "hi@arnis.wtf",
+		Year:    time.Now().Year(),
 		Projects: []Project{
 			{
-				Title:       "My Website Portfolio",
-				Description: "A minimalist portfolio website built with Go and CSS, embracing the early web aesthetic.",
+				Title:       "arnis.wtf",
+				Description: "This site. A clean portfolio built from scratch in Go — no frameworks, no bloat. Just hand-rolled HTML, CSS, and a server that stays out of the way.",
 				URL:         "https://arnis.wtf",
 				Tech:        []string{"Go", "HTML", "CSS"},
 			},
 			{
-				Title:       "Tip Me Bro",
-				Description: "Terminal styled web app for tipping me bro",
-				URL:         "https://tipmebro.wtf",
-				Tech:        []string{"JavaScript", "TypeScript", "Next.js"},
+				Title:       "Coming Soon",
+				Description: "A project I'm currently working on. It's a web app that will change the way you think about productivity. Stay tuned for more details!",
+				URL:         "#",
+				Tech:        []string{"Next.js", "TypeScript", "Tailwind CSS", "Go"},
 			},
 		},
 	}
 
-	// Parse and execute template
 	tmpl, err := template.ParseFiles("templates/index.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	err = tmpl.Execute(w, data)
-	if err != nil {
+	if err = tmpl.Execute(w, data); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
 	}
 }

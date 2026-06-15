@@ -3,51 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
-    <title>{{.Name}} - {{.Title}}</title>
-    <meta name="title" content="{{.Name}} - {{.Title}}">
-    <meta name="description" content="{{.Bio}} | Full Stack Developer specializing in Go, JavaScript, and cybersecurity. View my portfolio and get in touch for collaboration opportunities.">
-    <meta name="keywords" content="full stack developer, web development, Go, JavaScript, TypeScript, React, Next.js, cybersecurity, portfolio, software engineer">
+
+    <title>{{.Name}} &mdash; {{.Title}}</title>
+    <meta name="description" content="{{.Bio}}">
     <meta name="author" content="{{.Name}}">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-    
-    <!-- Open Graph / Facebook -->
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arnis.wtf">
-    <meta property="og:title" content="{{.Name}} - {{.Title}}">
-    <meta property="og:description" content="{{.Bio}} | Full Stack Developer specializing in Go, JavaScript, and cybersecurity.">
+    <meta property="og:title" content="{{.Name}} &mdash; {{.Title}}">
+    <meta property="og:description" content="{{.Bio}}">
     <meta property="og:image" content="https://arnis.wtf/icons/apple-touch-icon.png">
-    <meta property="og:site_name" content="{{.Name}} Portfolio">
-    <meta property="og:locale" content="en_US">
-    
+
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://arnis.wtf">
-    <meta property="twitter:title" content="{{.Name}} - {{.Title}}">
-    <meta property="twitter:description" content="{{.Bio}} | Full Stack Developer specializing in Go, JavaScript, and cybersecurity.">
-    <meta property="twitter:image" content="https://arnis.wtf/icons/apple-touch-icon.png">
-    
-    <!-- Favicon and Icons -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://arnis.wtf">
+    <meta name="twitter:title" content="{{.Name}} &mdash; {{.Title}}">
+    <meta name="twitter:description" content="{{.Bio}}">
+    <meta name="twitter:image" content="https://arnis.wtf/icons/apple-touch-icon.png">
+
+    <!-- Icons -->
     <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
     <link rel="manifest" href="/icons/site.webmanifest">
-    
-    <!-- Theme Colors -->
-    <meta name="theme-color" content="#000000">
-    <meta name="msapplication-TileColor" content="#000000">
-    
-    <!-- Canonical URL -->
+
+    <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://arnis.wtf">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    
-    <!-- Structured Data -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -57,197 +43,157 @@
         "description": "{{.Bio}}",
         "email": "{{.Contact}}",
         "url": "https://arnis.wtf",
-        "sameAs": [
-            "https://github.com/arnislvdev"
-        ],
-        "knowsAbout": [
-            "Go",
-            "JavaScript",
-            "TypeScript",
-            "React",
-            "Next.js",
-            "HTML",
-            "CSS",
-            "Full Stack Development",
-            "Cybersecurity"
-        ],
-        "alumniOf": "College Student",
-        "age": "18"
+        "sameAs": ["https://github.com/arnislvdev"],
+        "knowsAbout": ["Go", "JavaScript", "TypeScript", "React", "Next.js", "HTML", "CSS", "Cybersecurity"]
     }
     </script>
 </head>
 <body>
-        <!-- Header Navigation -->
-        <div class="header">
-            <div class="nav-links">
-                <a href="#home" onclick="scrollToSection('home')">home</a>
-                <span class="nav-separator">/</span>
-                <a href="#projects" onclick="scrollToSection('projects')">projects</a>
-                <span class="nav-separator">/</span>
-                <a href="#contact" onclick="scrollToSection('contact')">contact</a>
-                <span class="nav-separator">/</span>
-                <a href="https://github.com/arnislvdev" target="_blank">github</a>
-            </div>
-            <h1>{{.Name}}</h1>
-            <p>{{.Title}}</p>
-        </div>
 
-    <!-- About Section -->
-    <section id="home">
-        <h2>About</h2>
-        <p>{{.Bio}}</p>
-        
-        <div class="quote-section">
+    <header>
+        <div class="header-name">{{.Name}}</div>
+        <div class="header-title">{{.Title}}</div>
+        <nav>
+            [&nbsp;<a href="#about">about</a>&nbsp;/
+            <a href="#projects">projects</a>&nbsp;/
+            <a href="#skills">skills</a>&nbsp;/
+            <a href="#contact">contact</a>&nbsp;/
+            <a href="https://github.com/arnislvdev" target="_blank" rel="noopener noreferrer">github&nbsp;&uarr;</a>&nbsp;]
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- About -->
+        <section id="about">
+            <span class="section-meta">&lt;!-- about --&gt;</span>
+            <h2>About</h2>
+            <p>{{.Bio}}</p>
+            <p class="availability">* currently open to freelance &amp; full-time work &mdash; <a href="mailto:{{.Contact}}">say hello</a></p>
             <blockquote>
-                "Simplicity is the ultimate sophistication."
+                <p>&ldquo;If you ride like lightning, you're gonna crash like thunder.&rdquo;</p>
+                <cite>&mdash; The Place Beyond the Pines</cite>
             </blockquote>
-            <cite>- Leonardo da Vinci</cite>
-            <p class="mission">Building digital experiences with purpose & precision</p>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Form Section -->
-    <section class="newsletter">
-        <h2>Get In Touch</h2>
-        <p>Have a project in mind? Let's discuss how we can work together to bring your ideas to life.</p>
-        
-        <form class="newsletter-form" id="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="your@email.com" required>
-            <textarea name="message" placeholder="Tell me about your project..." rows="4" required></textarea>
-            <button type="submit">Open Email Client</button>
-        </form>
-    </section>
+        <hr>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects">
-            {{range .Projects}}
-            <div class="project">
-                <div class="project-title">
-                    <a href="{{.URL}}" target="_blank">{{.Title}}</a>
-                </div>
-                <div class="project-description">{{.Description}}</div>
-                <div class="project-tech">
-                    Tech: {{range $i, $tech := .Tech}}{{if $i}}, {{end}}{{$tech}}{{end}}
-                </div>
-            </div>
-            {{end}}
-        </div>
-    </section>
+        <!-- Projects -->
+        <section id="projects">
+            <span class="section-meta">&lt;!-- projects --&gt;</span>
+            <h2>Projects</h2>
+            <ul class="project-list">
+                {{range .Projects}}
+                <li>
+                    <p class="project-name"><a href="{{.URL}}" target="_blank" rel="noopener noreferrer">{{.Title}}&nbsp;&uarr;</a></p>
+                    <p class="project-desc">{{.Description}}</p>
+                    <p class="project-tech">{{range $i, $t := .Tech}}{{if $i}}, {{end}}{{$t}}{{end}}</p>
+                </li>
+                {{end}}
+            </ul>
+        </section>
 
-    <!-- Skills Section -->
-    <section>
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Languages</h3>
-                <div class="skill-tags">
-                    <a href="https://golang.org" target="_blank" class="skill-tag">Go</a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="skill-tag">JavaScript</a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="skill-tag">HTML</a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="skill-tag">CSS</a>
-                    <a href="https://www.typescriptlang.org" target="_blank" class="skill-tag">TypeScript</a>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>Frameworks & Libraries</h3>
-                <div class="skill-tags">
-                    <a href="https://nextjs.org" target="_blank" class="skill-tag">Next.js</a>
-                    <a href="https://tailwindcss.com" target="_blank" class="skill-tag">Tailwind CSS</a>
-                    <a href="https://reactjs.org" target="_blank" class="skill-tag">React</a>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>Databases</h3>
-                <div class="skill-tags">
-                    <a href="https://www.postgresql.org" target="_blank" class="skill-tag">SQL</a>
-                    <a href="https://www.mysql.com" target="_blank" class="skill-tag">MySQL</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        <hr>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <p>Let's connect and build something amazing together!</p>
-        <p>Email: <a href="mailto:{{.Contact}}">{{.Contact}}</a></p>
-        <p>GitHub: <a href="https://github.com/arnislvdev" target="_blank">github.com/arnislvdev</a></p>
-    </section>
+        <!-- Skills -->
+        <section id="skills">
+            <span class="section-meta">&lt;!-- skills --&gt;</span>
+            <h2>Skills</h2>
+            <dl class="skills-block">
+                <dt>languages</dt>
+                <dd>
+                    <a href="https://golang.org" target="_blank" rel="noopener noreferrer">Go</a>,
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">JavaScript</a>,
+                    <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</a>,
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">HTML</a>,
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer">CSS</a>
+                </dd>
+                <dt>frameworks</dt>
+                <dd>
+                    <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer">Next.js</a>,
+                    <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">React</a>,
+                    <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">Tailwind CSS</a>
+                </dd>
+                <dt>databases</dt>
+                <dd>
+                    <a href="https://www.postgresql.org" target="_blank" rel="noopener noreferrer">PostgreSQL</a>,
+                    <a href="https://www.mysql.com" target="_blank" rel="noopener noreferrer">MySQL</a>
+                </dd>
+            </dl>
+        </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p>© 2025 {{.Name}} | Built with Go & CSS</p>
-            <p>Last updated: <span id="lastUpdated"></span></p>
-            <p>Connect with me: <a href="mailto:{{.Contact}}">{{.Contact}}</a> | <a href="https://github.com/arnislvdev" target="_blank">GitHub</a></p>
-        </footer>
+        <hr>
+
+        <!-- Contact -->
+        <section id="contact">
+            <span class="section-meta">&lt;!-- contact --&gt;</span>
+            <h2>Contact</h2>
+            <p>Have a project in mind? Let&rsquo;s talk.</p>
+            <p class="contact-detail">email:&nbsp;&nbsp;<a href="mailto:{{.Contact}}">{{.Contact}}</a></p>
+            <p class="contact-detail">github:&nbsp;<a href="https://github.com/arnislvdev" target="_blank" rel="noopener noreferrer">github.com/arnislvdev</a></p>
+
+            <form id="contact-form" novalidate>
+                <div class="form-field">
+                    <label for="inp-name">name:</label>
+                    <input id="inp-name" type="text" name="name" placeholder="your name" required autocomplete="name">
+                </div>
+                <div class="form-field">
+                    <label for="inp-email">email:</label>
+                    <input id="inp-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+                </div>
+                <div class="form-field">
+                    <label for="inp-message">message:</label>
+                    <textarea id="inp-message" name="message" rows="5" placeholder="tell me about your project..." required></textarea>
+                </div>
+                <button type="submit">[ send message ]</button>
+                <p id="form-status" class="form-status" aria-live="polite"></p>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <hr class="footer-rule">
+        <p>&copy; {{.Year}} {{.Name}} &mdash; built with Go &amp; CSS</p>
+        <p><a href="mailto:{{.Contact}}">{{.Contact}}</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="https://github.com/arnislvdev" target="_blank" rel="noopener noreferrer">github.com/arnislvdev</a></p>
+    </footer>
 
     <script>
-        // Simple JavaScript for old-school feel
-        document.addEventListener('DOMContentLoaded', function() {
-            // Update last modified date
-            document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString();
-            
-            // Simple form handling that opens email client
-            const form = document.getElementById('contact-form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const name = form.querySelector('input[name="name"]').value.trim();
-                    const email = form.querySelector('input[name="email"]').value.trim();
-                    const message = form.querySelector('textarea[name="message"]').value.trim();
-                    
-                    // Basic validation
-                    if (!name || !email || !message) {
-                        alert('Please fill in all fields.');
-                        return;
-                    }
-                    
-                    // Email validation
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(email)) {
-                        alert('Please enter a valid email address.');
-                        return;
-                    }
-                    
-                    // Create mailto link
-                    const subject = encodeURIComponent(`Contact from ${name} - Portfolio Website`);
-                    const body = encodeURIComponent(`Hi Arnis,
+        (function () {
+            const form   = document.getElementById('contact-form');
+            const status = document.getElementById('form-status');
 
-${message}
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
 
-Best regards,
-${name}
-Email: ${email}`);
-                    
-                    const mailtoLink = `mailto:hi@arnis.wtf?subject=${subject}&body=${body}`;
-                    
-                    // Open email client
-                    window.location.href = mailtoLink;
-                    
-                    // Show success message
-                    alert('Your email client should open with a pre-filled message. If it doesn\'t open automatically, please email me at hi@arnis.wtf');
-                    
-                    // Reset form
-                    form.reset();
-                });
-            }
-        });
-        
-        // Smooth scrolling for navigation
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-        
+                const name    = form.elements['name'].value.trim();
+                const email   = form.elements['email'].value.trim();
+                const message = form.elements['message'].value.trim();
+                const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+                function showStatus(msg, type) {
+                    status.textContent = msg;
+                    status.className   = 'form-status visible ' + type;
+                }
+
+                if (!name || !email || !message) {
+                    showStatus('please fill in all fields.', 'status-error');
+                    return;
+                }
+                if (!emailOk) {
+                    showStatus('please enter a valid email address.', 'status-error');
+                    return;
+                }
+
+                const subject = encodeURIComponent('Contact from ' + name + ' \u2014 Portfolio');
+                const body    = encodeURIComponent('Hi Arnis,\n\n' + message + '\n\nBest,\n' + name + '\n' + email);
+
+                window.location.href = 'mailto:{{.Contact}}?subject=' + subject + '&body=' + body;
+                showStatus('> email client opened. if nothing happened, write to {{.Contact}} directly.', 'status-ok');
+                form.reset();
+            });
+        })();
     </script>
+
 </body>
 </html>
